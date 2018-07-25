@@ -1,10 +1,9 @@
-# Game Created by Lawson, Ryker, Asher and Izzy. 
+# Game Created by Lawson
 
 import pygame
 import random
 import os
 from os import path
-
 
 #-------------------------------
 # define colors used in the game
@@ -21,8 +20,6 @@ height = 600
 FPS = 60
 BackgroundScroll_Y = 0
 
-
-
 score = 0
 
 TheWindowName = "SpaceBoat by Ryker, Izzy and Asher"
@@ -37,7 +34,7 @@ EnemyShipFolder = path.join(imgfolder, "EnemyShips")
 ExplosionFolder = path.join(imgfolder, "Explosions")
 RedExplosionFolder = path.join(ExplosionFolder, "RedUp") 
 PlayerExplosionFolder = path.join(ExplosionFolder, "PlayerBlowUp") 
-print(imgfolder)
+print("The Image Folder Location: " + imgfolder)
 snd_dir = path.join(path.dirname(__file__), 'snd')
 
 #--------------
@@ -147,7 +144,6 @@ class Shields(pygame.sprite.Sprite):
         self.rect.centerx = width / 2
         self.rect.bottom = height - 10
         
-
     def update(self):
         self.rect.x = player.rect.x
         self.rect.y = player.rect.y
@@ -183,7 +179,7 @@ class Player(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         
         self.radius = 45
-        #pygame.draw.circle(self.image, red, self.rect.center, self.radius)
+        # pygame.draw.circle(self.image, red, self.rect.center, self.radius)
         
         #---------------------------------------
         # Place ship in the center of the screen
