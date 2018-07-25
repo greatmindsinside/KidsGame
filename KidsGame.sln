@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2035
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "KidsGame", "KidsGame\KidsGame.pyproj", "{AC8E60D3-9821-4201-9C2D-8DF898D1E61F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AC8E60D3-9821-4201-9C2D-8DF898D1E61F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC8E60D3-9821-4201-9C2D-8DF898D1E61F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AD2D40DB-FC23-4257-BE64-CE8BF730CD6B}
+	EndGlobalSection
+EndGlobal
