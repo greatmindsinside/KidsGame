@@ -1,4 +1,4 @@
-# Game Created by Lawson
+# Game Created by Lawson 
 
 import pygame
 import random
@@ -140,7 +140,6 @@ class Shields(pygame.sprite.Sprite):
         self.image = pygame.transform.scale(shield_img, (100, 100))
         self.image.set_colorkey(black)
         self.rect = self.image.get_rect()
-        
         self.rect.centerx = width / 2
         self.rect.bottom = height - 10
         
@@ -160,7 +159,7 @@ class Bullet(pygame.sprite.Sprite):
 
     def update(self):
         self.rect.y += self.speedy
-        #kill if it moves off the screen
+        # Kill if it moves off the screen
         if self.rect.bottom < 0:
             self.kill()
 
@@ -202,7 +201,6 @@ class Player(pygame.sprite.Sprite):
         self.hidden = False
         self.hide_timer = pygame.time.get_ticks()
       
-    
     def update(self):
         #unhide if hidden
         if self.hidden and pygame.time.get_ticks() - self.hide_timer > 2000:
@@ -238,8 +236,7 @@ class Player(pygame.sprite.Sprite):
                 self.rect.bottom = height
         if self.rect.top < 0: 
             self.rect.top = 0
-        
-
+ 
     def shoot(self):
         now = pygame.time.get_ticks()
         if now - self.last_shot > self.shoot_delay:
@@ -453,8 +450,7 @@ while IsGameRunning:
         expl = Explosion(hit.rect.center, 'lg')
         all_sprites.add(expl)
         pygame.time.set_timer(respawn, 500)
-        
-
+   
     #-------------------------------------
     # Check to see if a mob hit the player
     #-------------------------------------
