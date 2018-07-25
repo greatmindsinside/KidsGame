@@ -151,9 +151,6 @@ class Shields(pygame.sprite.Sprite):
     def update(self):
         self.rect.x = player.rect.x
         self.rect.y = player.rect.y
-       
-
-
 
 class Bullet(pygame.sprite.Sprite):
     def __init__(self, x, y):
@@ -208,13 +205,10 @@ class Player(pygame.sprite.Sprite):
         self.lives = 3
         self.hidden = False
         self.hide_timer = pygame.time.get_ticks()
-
-        
+      
     
     def update(self):
         #unhide if hidden
-        
-
         if self.hidden and pygame.time.get_ticks() - self.hide_timer > 2000:
             self.hidden = False
             self.rect.centerx = width / 2
@@ -259,7 +253,6 @@ class Player(pygame.sprite.Sprite):
             bullets.add(bullet)
             shoot_sound.play()
     
-   
     def hide(self):
         #hide the player temp
         self.hidden = True
@@ -285,8 +278,6 @@ class EnemyShips(pygame.sprite.Sprite):
             self.rect.x = random.randrange(width - self.rect.width)
             self.rect.y = random.randrange(-100, -40)
             self.speedy = random.randrange(1, 8)
-
-    
         
 class Mob(pygame.sprite.Sprite):
     def __init__(self):
@@ -350,7 +341,6 @@ class Explosion(pygame.sprite.Sprite):
                 self.image = explosion_anim[self.size][self.frame]
                 self.rect = self.image.get_rect()
                 self.rect.center = center
-
         
 #---------------------
 # Load Images
@@ -370,7 +360,6 @@ player_mini_img.set_colorkey(black)
 shield_img = pygame.image.load(path.join(imgfolder, "shield.png")).convert()
 shield_img.set_alpha(50)
 
-
 # Bullet Image
 bullet_img = pygame.image.load(path.join(imgfolder, "laserRed16.png")).convert()
 
@@ -386,13 +375,11 @@ explosion_anim['lg'] = []
 explosion_anim['sm'] = []
 explosion_anim['player'] = []
 
-
-
 loadingAnimations(1, 19, RedExplosionFolder, "{}.png", explosion_anim, "lg", black, (75,75))
 loadingAnimations(1, 19, RedExplosionFolder, "{}.png", explosion_anim, "sm", black, (35,35))
 loadingAnimations(60, 99, PlayerExplosionFolder, "0000{}.png", explosion_anim, "player", black, (100,100))
-  
 
+# Loading Enemy Images
 enemy_images = []
 enemyship_list = load_images(EnemyShipFolder)
 for img in enemyship_list:
@@ -421,9 +408,9 @@ bullets = pygame.sprite.Group()
 enemyships = pygame.sprite.Group()
 shieldgrp = pygame.sprite.Group()
 
-
-#Create an instance in our game of the player then add the player to the game
-
+#-----------------------------------------------------------------------------
+# Create an instance in our game of the player then add the player to the game
+#-----------------------------------------------------------------------------
 playershields = Shields()
 all_sprites.add(playershields)
 
@@ -434,7 +421,7 @@ all_sprites.add(player)
 for i in range(8):
    SpawnEnemy()
     
-
+# Play the music in a loop
 pygame.mixer.music.play(loops = -1)
 
 # Game loop
@@ -460,9 +447,10 @@ while IsGameRunning:
     # Update
     all_sprites.update()
     
+    #---------------------------------------
     # Check to see if a bullet hit a bad guy
+    #---------------------------------------
     hits = pygame.sprite.groupcollide(mobs, bullets, True, True) or pygame.sprite.groupcollide(enemyships, bullets, True, True)
-    #print(HitsMob)
     for hit in hits:
         score += 50 - hit.radius
         random.choice(expl_sounds).play()
@@ -486,8 +474,9 @@ while IsGameRunning:
             player.lives -= 1
             player.shield = 100
             
-    
-    # if player died and the explosion has finished then end game
+    #------------------------------------------------------------
+    # If player died and the explosion has finished then end game
+    #------------------------------------------------------------
     if player.lives == 0 and not player_explodes.alive():
         player.kill()
         IsGameRunning = False
@@ -501,8 +490,9 @@ while IsGameRunning:
     DrawShieldBar(screen, 5, 5, player.shield)
     DisplayText(screen, "Score: " + str(score), 20, width / 2, 10)
     draw_lives(screen, width - 100, 5, player.lives, player_mini_img)
-    
+    #-------------------------------------------
     # After drawing everything, flip the display
+    #-------------------------------------------
     pygame.display.flip()
     
 
